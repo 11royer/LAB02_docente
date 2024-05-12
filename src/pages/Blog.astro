@@ -1,0 +1,21 @@
+import { articles } from './api/articles'
+
+const Blog = async () => {
+  const response = await fetch('http://localhost:1337/api/articles')
+  const data = await response.json();
+
+  return (
+    <div>
+      <h1>Mi Blog</h1>
+      <ul>
+        {data.map((article) => (
+          <li key={article.id}>
+            <a href={`/blog/${article.slug}`}>{article.title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default Blog;
